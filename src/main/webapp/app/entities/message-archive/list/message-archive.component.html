@@ -1,0 +1,219 @@
+<div>
+  <h2 id="page-heading" data-cy="MessageArchiveHeading">
+    <span>Message Archives</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-message-archive"
+        [routerLink]="['/message-archive/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span>Create a new Message Archive</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <jhi-filter [filters]="filters"></jhi-filter>
+
+  @if (messageArchives?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span>No Message Archives found</span>
+    </div>
+  }
+
+  @if (messageArchives && messageArchives.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span>ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="message">
+              <div class="d-flex">
+                <span>Message</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hasRead">
+              <div class="d-flex">
+                <span>Has Read</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hasEmergAlert">
+              <div class="d-flex">
+                <span>Has Emerg Alert</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hasSignOut">
+              <div class="d-flex">
+                <span>Has Sign Out</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="senderRefTable">
+              <div class="d-flex">
+                <span>Sender Ref Table</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="senderRefId">
+              <div class="d-flex">
+                <span>Sender Ref Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="receiverRefTable">
+              <div class="d-flex">
+                <span>Receiver Ref Table</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="receiverRefId">
+              <div class="d-flex">
+                <span>Receiver Ref Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span>Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="studentId">
+              <div class="d-flex">
+                <span>Student Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hasPrivateActive">
+              <div class="d-flex">
+                <span>Has Private Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="schoolId">
+              <div class="d-flex">
+                <span>School Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastModified">
+              <div class="d-flex">
+                <span>Last Modified</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastModifiedBy">
+              <div class="d-flex">
+                <span>Last Modified By</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (messageArchive of messageArchives; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/message-archive', messageArchive.id, 'view']">{{ messageArchive.id }}</a>
+              </td>
+              <td>{{ messageArchive.message }}</td>
+              <td>{{ messageArchive.hasRead }}</td>
+              <td>{{ messageArchive.hasEmergAlert }}</td>
+              <td>{{ messageArchive.hasSignOut }}</td>
+              <td>{{ messageArchive.senderRefTable }}</td>
+              <td>{{ messageArchive.senderRefId }}</td>
+              <td>{{ messageArchive.receiverRefTable }}</td>
+              <td>{{ messageArchive.receiverRefId }}</td>
+              <td>{{ messageArchive.status }}</td>
+              <td>{{ messageArchive.studentId }}</td>
+              <td>{{ messageArchive.hasPrivateActive }}</td>
+              <td>{{ messageArchive.schoolId }}</td>
+              <td>{{ messageArchive.lastModified | formatMediumDatetime }}</td>
+              <td>{{ messageArchive.lastModifiedBy }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/message-archive', messageArchive.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/message-archive', messageArchive.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(messageArchive)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (messageArchives && messageArchives.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>
