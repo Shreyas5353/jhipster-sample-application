@@ -1,0 +1,30 @@
+entity MessageArchive {
+    message String
+    hasRead Boolean
+    hasEmergAlert Boolean
+    hasSignOut Boolean 
+    senderRefTable String
+    senderRefId Long
+    receiverRefTable String
+    receiverRefId Long
+    status String
+    studentId Long   
+    hasPrivateActive Boolean // new added field
+    schoolId Long
+    lastModified Instant
+    lastModifiedBy String 
+    }
+    
+      // Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service * with serviceClass
+
+filter *
+// Set an angular suffix
+// angularSuffix * with tvg
