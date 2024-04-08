@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (messageArchive) {
+      <div>
+        <h2 data-cy="messageArchiveDetailsHeading"><span>Message Archive</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ messageArchive.id }}</span>
+          </dd>
+          <dt><span>Message</span></dt>
+          <dd>
+            <span>{{ messageArchive.message }}</span>
+          </dd>
+          <dt><span>Has Read</span></dt>
+          <dd>
+            <span>{{ messageArchive.hasRead }}</span>
+          </dd>
+          <dt><span>Has Emerg Alert</span></dt>
+          <dd>
+            <span>{{ messageArchive.hasEmergAlert }}</span>
+          </dd>
+          <dt><span>Has Sign Out</span></dt>
+          <dd>
+            <span>{{ messageArchive.hasSignOut }}</span>
+          </dd>
+          <dt><span>Sender Ref Table</span></dt>
+          <dd>
+            <span>{{ messageArchive.senderRefTable }}</span>
+          </dd>
+          <dt><span>Sender Ref Id</span></dt>
+          <dd>
+            <span>{{ messageArchive.senderRefId }}</span>
+          </dd>
+          <dt><span>Receiver Ref Table</span></dt>
+          <dd>
+            <span>{{ messageArchive.receiverRefTable }}</span>
+          </dd>
+          <dt><span>Receiver Ref Id</span></dt>
+          <dd>
+            <span>{{ messageArchive.receiverRefId }}</span>
+          </dd>
+          <dt><span>Status</span></dt>
+          <dd>
+            <span>{{ messageArchive.status }}</span>
+          </dd>
+          <dt><span>Student Id</span></dt>
+          <dd>
+            <span>{{ messageArchive.studentId }}</span>
+          </dd>
+          <dt><span>Has Private Active</span></dt>
+          <dd>
+            <span>{{ messageArchive.hasPrivateActive }}</span>
+          </dd>
+          <dt><span>School Id</span></dt>
+          <dd>
+            <span>{{ messageArchive.schoolId }}</span>
+          </dd>
+          <dt><span>Last Modified</span></dt>
+          <dd>
+            <span>{{ messageArchive.lastModified | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Last Modified By</span></dt>
+          <dd>
+            <span>{{ messageArchive.lastModifiedBy }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/message-archive', messageArchive.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

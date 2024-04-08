@@ -1,0 +1,170 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-message-archive-heading" data-cy="MessageArchiveCreateUpdateHeading">Create or edit a Message Archive</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_message">Message</label>
+          <input type="text" class="form-control" name="message" id="field_message" data-cy="message" formControlName="message" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_hasRead">Has Read</label>
+          <input type="checkbox" class="form-check" name="hasRead" id="field_hasRead" data-cy="hasRead" formControlName="hasRead" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_hasEmergAlert">Has Emerg Alert</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="hasEmergAlert"
+            id="field_hasEmergAlert"
+            data-cy="hasEmergAlert"
+            formControlName="hasEmergAlert"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_hasSignOut">Has Sign Out</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="hasSignOut"
+            id="field_hasSignOut"
+            data-cy="hasSignOut"
+            formControlName="hasSignOut"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_senderRefTable">Sender Ref Table</label>
+          <input
+            type="text"
+            class="form-control"
+            name="senderRefTable"
+            id="field_senderRefTable"
+            data-cy="senderRefTable"
+            formControlName="senderRefTable"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_senderRefId">Sender Ref Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="senderRefId"
+            id="field_senderRefId"
+            data-cy="senderRefId"
+            formControlName="senderRefId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_receiverRefTable">Receiver Ref Table</label>
+          <input
+            type="text"
+            class="form-control"
+            name="receiverRefTable"
+            id="field_receiverRefTable"
+            data-cy="receiverRefTable"
+            formControlName="receiverRefTable"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_receiverRefId">Receiver Ref Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="receiverRefId"
+            id="field_receiverRefId"
+            data-cy="receiverRefId"
+            formControlName="receiverRefId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status">Status</label>
+          <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_studentId">Student Id</label>
+          <input type="number" class="form-control" name="studentId" id="field_studentId" data-cy="studentId" formControlName="studentId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_hasPrivateActive">Has Private Active</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="hasPrivateActive"
+            id="field_hasPrivateActive"
+            data-cy="hasPrivateActive"
+            formControlName="hasPrivateActive"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_schoolId">School Id</label>
+          <input type="number" class="form-control" name="schoolId" id="field_schoolId" data-cy="schoolId" formControlName="schoolId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lastModified">Last Modified</label>
+          <div class="d-flex">
+            <input
+              id="field_lastModified"
+              data-cy="lastModified"
+              type="datetime-local"
+              class="form-control"
+              name="lastModified"
+              formControlName="lastModified"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lastModifiedBy">Last Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

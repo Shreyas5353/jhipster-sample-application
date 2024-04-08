@@ -1,0 +1,71 @@
+{
+  "annotations": {
+    "changelogDate": "20240408123604"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "message",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hasRead",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "hasEmergAlert",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "hasSignOut",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "senderRefTable",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "senderRefId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "receiverRefTable",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "receiverRefId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "studentId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "hasPrivateActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "schoolId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "MessageArchive",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
